@@ -6,6 +6,7 @@ COPY wordpress.conf     /etc/nginx/conf.d/wordpress.conf
 COPY security.conf      /etc/nginx/conf.d/security.conf
 COPY gzip.conf          /etc/nginx/conf.d/gzip.conf
 COPY ssl.conf           /etc/nginx/ssl.conf
+COPY index.php          /var/www/wordpress/
 
 RUN set +x \
 apk add --no-cache curl \
@@ -13,7 +14,6 @@ apk add --no-cache curl \
 && adduser -u 82 -D -S -G www-data www-data \
 && ln -sf /dev/stdout /var/log/nginx/access.log \
 && ln -sf /dev/stderr /var/log/nginx/error.log \
-&& echo "<? echo date('m/d/Y H:i:s'); ?>" > /var/www/wordpress/index.php \
 && rm /etc/nginx/conf.d/default.conf \
 && chown -R www-data:www-data /etc/nginx/conf.d/ /etc/nginx/nginx.conf /usr/sbin/nginx
 
