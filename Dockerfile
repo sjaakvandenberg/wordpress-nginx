@@ -13,6 +13,7 @@ apk add --no-cache curl \
 && adduser -u 82 -D -S -G www-data www-data \
 && ln -sf /dev/stdout /var/log/nginx/access.log \
 && ln -sf /dev/stderr /var/log/nginx/error.log \
+&& echo "<? echo date('m/d/Y H:i:s'); ?>" > /var/www/wordpress/index.php \
 && rm /etc/nginx/conf.d/default.conf \
 && chown -R www-data:www-data /etc/nginx/conf.d/ /etc/nginx/nginx.conf /usr/sbin/nginx
 
