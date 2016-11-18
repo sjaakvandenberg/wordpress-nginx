@@ -2,10 +2,6 @@ FROM nginx:alpine
 
 COPY nginx.conf         /etc/nginx/nginx.conf
 COPY vhost.conf         /etc/nginx/sites-enabled/vhost.conf
-COPY wordpress.conf     /etc/nginx/conf.d/wordpress.conf
-COPY security.conf      /etc/nginx/conf.d/security.conf
-COPY gzip.conf          /etc/nginx/conf.d/gzip.conf
-COPY ssl.conf           /etc/nginx/ssl.conf
 COPY index.php          /var/www/wordpress/
 
 RUN set +x \
